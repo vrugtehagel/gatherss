@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Gatherss</title>
+<link rel="stylesheet" href="/action/action.css">
+<link rel="stylesheet" href="./index.css">
+<script type="module" src="./index.js"></script>
+
+<nav id="toolbar">
+	<a class="button" href="/action/index.html" title="Back">
+		<img src="/icons/back.svg" width="16" height="16" alt="Back">
+	</a>
+	<h1>Settings</h1>
+</nav>
+
+<h2>General</h2>
+<form disabled>
+	<label>
+		<input type="checkbox" name="unreaddot" checked>
+		Show unread dot
+		<p>Get notified when there are new posts.</p>
+	</label>
+	<label>
+		<input type="checkbox" name="discoverydot" checked>
+		Show discovery dot
+		<p>See whether or not a page supports RSS at a glance.</p>
+	</label>
+	<label>
+		<input type="checkbox" name="developermode">
+		Unsafe danger zone developer mode
+		<p>For experimental features that are prone to breaking. Use at your own risk.</p>
+	</label>
+</form>
+
+<h2>Feeds</h2>
+<p>Adjust settings of individual feeds</p>
+<nav id="feeds"></nav>
+
+<h2>About</h2>
+<p>Gatherss is a small side project made by <a href="https://vrugtehagel.nl">vrugtehagel</a>. It is free, open-source, privacy-friendly, and most of all; simple. You can view the source on <a href="https://github.com/vrugtehagel/gatherss">GitHub</a>.</p>

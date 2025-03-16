@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Gatherss</title>
+<link rel="stylesheet" href="/action/action.css">
+<link rel="stylesheet" href="./index.css">
+<script type="module" src="./index.js"></script>
+
+<nav id="toolbar">
+	<a class="button" href="/action/index.html" title="Back">
+		<img src="/icons/back.svg" width="16" height="16" alt="Back">
+	</a>
+	<h1>Add feed source</h1>
+</nav>
+
+<form action="../save/index.html" method="GET" class="loading">
+	<label>
+		Feed URL
+		<input name="feedurl" type="text" readonly>
+	</label>
+	<label>
+		Feed name
+		<input name="feedname" type="text" disabled required>
+	</label>
+	<button type="submit" name="submit" disabled>Add</button>
+</form>

@@ -1,0 +1,20 @@
+#posts {
+	a {
+		display: flex; max-width: 30rem; padding: .5rem .75rem;
+		gap: .75rem; align-items: center;
+		color: inherit;
+		border-radius: .25rem;
+		text-decoration: none;
+		&:hover { background-color: var(--button-color-hover); }
+		&:active { background-color: var(--button-color-active); }
+		span {
+			flex: 1;
+			white-space: nowrap; text-overflow: ellipsis; overflow-x: hidden;
+		}
+	}
+	&:empty {
+		color: var(--text-color-dim);
+		font-size: .875rem;
+		&::after { content: "No posts found"; }
+	}
+}

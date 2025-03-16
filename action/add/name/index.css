@@ -1,0 +1,19 @@
+form {
+	display: flex;
+	flex-flow: column; gap: .25rem;
+	label {
+		display: flex; margin: .25rem 0;
+		flex-flow: column; gap: .5rem;
+		text-indent: .5rem;
+		&:not(:first-of-type){ margin-top: 1rem; }
+	}
+	&.loading input[disabled] {
+		padding-right: 2rem;
+		background: center / 1rem 1rem no-repeat url("/icons/spinner.svg");
+		background-position-x: calc(100% - .5rem);
+	}
+	button[type=submit] {
+		align-self: end;
+		padding-inline: 1.5rem; margin-top: 1.5rem;
+	}
+}

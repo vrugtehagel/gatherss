@@ -1,0 +1,71 @@
+:root {
+	color-scheme: light dark;
+	--background-color: light-dark(white, #1C1B22);
+	--text-color: light-dark(#15141A, #FBFBFE);
+	--text-color-dim: light-dark(#737373, #A8A8A8);
+	--accent-color: light-dark(#0060df, #0df);
+	--accent-color-hover: light-dark(#0250bb, #80ebff);
+	--accent-color-active: light-dark(#054096, #aaf2ff);
+	--button-color: color-mix(in srgb, currentColor 7%, transparent);
+	--button-color-hover: color-mix(in srgb, currentColor 14%, transparent);
+	--button-color-active: color-mix(in srgb, currentColor 21%, transparent);
+	--box-color: light-dark(white, #23222B);
+	--box-border-color: color-mix(in srgb, currentColor 41%, transparent);
+	--separator-color: light-dark(#D7D7DB, #F9F9FA33);
+	font-size: 100%;
+}
+
+body {
+	min-width: 20rem; margin: 0; padding: 1.25rem;
+	color: var(--text-color); background-color: var(--background-color);
+	font: message-box;
+	font-size: 1rem; line-height: 1.5;
+	accent-color: var(--accent-color);
+}
+input {
+	min-height: 2rem; padding: 0 .5rem;
+	background-color: var(--box-color);
+	border: thin solid var(--box-border-color); border-radius: .25rem;
+	outline: none;
+	font-size: 1rem;
+	&:not(:read-only, :disabled):focus {
+		outline: 2px solid var(--accent-color); outline-offset: -1px;
+	}
+	&:read-only {
+		color: var(--text-color-dim);
+		caret-color: transparent;
+	}
+}
+button:not(.link), a.button {
+	height: 1rem; padding: .5rem; box-sizing: content-box;
+	color: inherit; background-color: var(--button-color);
+	border: none; border-radius: .25rem;
+	text-decoration: none;
+	cursor: default;
+	&:not(:has(img)){ padding-inline: .75rem; }
+	&:disabled { opacity: .4; }
+	&:not(:disabled):hover { background-color: var(--button-color-hover); }
+	&:not(:disabled):active { background-color: var(--button-color-active); }
+}
+button.link, a:not(.button){
+	padding: 0;
+	color: var(--accent-color); background: none;
+	border: none;
+	text-decoration: underline;
+	cursor: pointer;
+	&:hover { color: var(--accent-color-hover); }
+	&:active { color: var(--accent-color-active); }
+}
+:is(button, a) img { display: block; }
+
+#toolbar {
+	display: flex; min-height: 2rem; margin: -.5rem 0 1.5rem;
+	gap: .75rem; align-items: center;
+	h1 {
+		flex: 1;
+		margin: 0;
+		font-weight: 600; font-size: 1rem;
+	}
+	:is(.button, button):first-child { margin-left: -.5rem; }
+	:is(.button, button):last-child { margin-right: -.5rem; }
+}

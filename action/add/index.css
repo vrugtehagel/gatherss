@@ -1,0 +1,24 @@
+form {
+	display: flex;
+	flex-flow: column; gap: .25rem;
+	label {
+		display: flex; margin: .25rem 0;
+		flex-flow: column; gap: .5rem;
+		text-indent: .5rem;
+	}
+	&.loading input {
+		padding-right: 2rem;
+		background: center / 1rem 1rem no-repeat url("/icons/spinner.svg");
+		background-position-x: calc(100% - .5rem);
+	}
+	p {
+		min-height: 1lh; margin: 0 .5rem;
+		color: var(--text-color-dim);
+		font-size: .875rem;
+		button { text-align: left; }
+	}
+	button[type=submit] {
+		align-self: end;
+		padding-inline: 1.5rem; margin-top: .25rem;
+	}
+}

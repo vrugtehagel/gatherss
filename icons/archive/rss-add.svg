@@ -1,0 +1,5 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color-scheme: light dark;">
+	<path d="M23 2V16M21 9L23 7L25 9L23 11ZM30 9H16M21 26A16 16 0 0 0 6 11" fill="none" stroke="light-dark(#5B5B66, #FBFBFB)" stroke-width="2.5" stroke-linecap="round"/>
+	<path d="M17.3 6Q11 2.75 6 2.75A0.05 0.05 0 0 0 6 5.25Q9.4 5.25 13.7 7.05Q14.7 6 16 6ZM26 16Q26 17.3 24.95 18.3Q26.75 22.6 26.75 26A0.05 0.05 0 0 0 29.25 26Q29.25 20.9 26 14.8Z" fill="light-dark(#5B5B66, #FBFBFB)"/>
+	<circle cx="9" cy="23" r="4" fill="light-dark(#5B5B66, #FBFBFB)"/>
+</svg>

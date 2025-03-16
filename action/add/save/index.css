@@ -1,0 +1,4 @@
+#spinner {
+	display: grid; min-height: 4rem; padding: 0 0 2rem;
+	place-items: center;
+}

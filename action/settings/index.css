@@ -1,0 +1,43 @@
+body {
+	max-width: 20rem;
+}
+h2 {
+	margin: 1.5rem 0 .25rem;
+	font-weight: 600; font-size: 1.125rem;
+	& + p { margin: 0 0 .75rem; }
+}
+p { line-height: 1.25; }
+label {
+	display: grid; margin: 1rem 0;
+	grid: auto / auto 1fr; gap: 0 .5rem; place-items: center start;
+	input[type=checkbox]{
+		width: 1rem; min-height: 1rem; margin: 0;
+	}
+	p {
+		grid-column: 2;
+		margin: 0;
+		color: var(--text-color-dim);
+		font-size: .875rem;
+	}
+}
+
+#feeds {
+	a {
+		display: flex; max-width: 30rem; padding: .5rem .75rem;
+		gap: .75rem; align-items: center;
+		color: inherit;
+		border-radius: .25rem;
+		text-decoration: none;
+		&:hover { background-color: var(--button-color-hover); }
+		&:active { background-color: var(--button-color-active); }
+		span {
+			flex: 1;
+			white-space: nowrap; text-overflow: ellipsis; overflow-x: hidden;
+		}
+	}
+	&:empty {
+		color: var(--text-color-dim);
+		font-size: .875rem;
+		&::after { content: "No feeds found"; }
+	}
+}
