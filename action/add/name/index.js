@@ -1,5 +1,5 @@
-import {saveFeed} from '/utils/feed.js'
-import {getTitle} from '/utils/home.js'
+import {saveFeed} from '/-/feed.js'
+import {getTitle} from '/-/home.js'
 
 const form = document.querySelector('form')
 const {searchParams} = new URL(location.href)

@@ -1,4 +1,4 @@
-import {saveFeed} from '/utils/feed.js'
+import {saveFeed} from '/-/feed.js'
 
 const {searchParams} = new URL(location.href)
 const url = searchParams.get('feedurl')

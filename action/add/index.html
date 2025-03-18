@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>Gatherss</title>
+<title>Add Gatherss feed</title>
+<link rel="icon" href="/icons/add.svg">
 <link rel="stylesheet" href="/action/action.css">
 <link rel="stylesheet" href="./index.css">
 <script type="module" src="./index.js"></script>
@@ -19,5 +20,10 @@
 		<p id="message"></p>
 	</label>
 	<input type="submit" hidden>
-	<button type="submit" name="submit" disabled>Add</button>
+	<div id="actions">
+		<a href="/action/settings/index.html#import-or-export" hidden>
+			Import OPML
+		</a>
+		<button type="submit" name="submit" disabled>Add</button>
+	</div>
 </form>

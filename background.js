@@ -1,5 +1,5 @@
-import {refreshAllPosts} from '/utils/posts.js'
-import {getSetting, setSetting} from '/utils/settings.js'
+import {refreshAllPosts} from '/-/posts.js'
+import {getSetting, setSetting} from '/-/settings.js'
 
 browser.tabs.onUpdated.addListener((id, changeInfo, tab) => {
 	if(tab.active) checkForRssFeed(tab.id)

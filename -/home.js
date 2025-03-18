@@ -4,7 +4,10 @@ export async function getIcon(url){
 	const {origin} = new URL(url)
 	const links = await queryDom(origin, 'link[rel=icon]')
 	if(links.length == 0) return ''
-	const link = links.find(link => link.type == 'image/svg+xml') ?? links[0]
+	const svg = links.find(link => link.type == 'image/svg+xml')
+	const icon32 = links.find(link => link.sizes.contains('32x32'))
+	const icon16 = links.find(link => link.sizes.contains('16x16'))
+	const link = svg ?? icon32 ?? icon16 ?? links[0]
 	if(!URL.canParse(link.getAttribute('href'), origin)) return ''
 	const {href} = new URL(link.getAttribute('href'), origin)
 	return href

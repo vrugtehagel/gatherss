@@ -1,5 +1,6 @@
-import {getFeed, removeFeed} from '/utils/feed.js'
-import {refreshPosts} from '/utils/posts.js'
+import {getFeed, updateFeed, removeFeed} from '/-/feed.js'
+import {refreshPosts} from '/-/posts.js'
+import {getSetting} from '/-/settings.js'
 
 const {searchParams} = new URL(location.href)
 const feedUrl = searchParams.get('feedurl')
@@ -33,3 +34,6 @@ remove.onclick = async () => {
 	await removeFeed(feedUrl)
 	location.assign('../index.html')
 }
+
+const developerMode = await getSetting('developerMode')
+form.elements.feedurl.readOnly = !developerMode

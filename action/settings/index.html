@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>Gatherss</title>
+<title>Gatherss settings</title>
+<link rel="icon" href="/icons/settings.svg">
 <link rel="stylesheet" href="/action/action.css">
 <link rel="stylesheet" href="./index.css">
 <script type="module" src="./index.js"></script>
@@ -34,6 +35,17 @@
 <h2>Feeds</h2>
 <p>Adjust settings of individual feeds</p>
 <nav id="feeds"></nav>
+
+<h2 id="import-or-export">Import/export</h2>
+<p>Import or export your feeds using the OPML format. <span id="open-tab-warning">Unfortunately, due to restrictions in Firefox, to import a file you must <a href="./index.html?tab" target="_blank">open this page</a> as a separate tab.</span></p>
+<div id="import-export">
+	<label>
+		<img src="/icons/spinner.svg" alt="" width="16" height="16">
+		Import
+		<input type="file" disabled>
+	</label>
+	<a href="#" class="button" download="feeds.opml">Export</a>
+</div>
 
 <h2>About</h2>
 <p>Gatherss is a small side project made by <a href="https://vrugtehagel.nl">vrugtehagel</a>. It is free, open-source, privacy-friendly, and most of all; simple. You can view the source on <a href="https://github.com/vrugtehagel/gatherss">GitHub</a>.</p>

@@ -79,9 +79,13 @@ async function fetchHtmlPosts(url){
 	const depths = candidates.map(candidate => getDepth(candidate))
 	const maxDepth = Math.max(depths)
 	const parent = candidates[depths.indexOf(maxDepth)]
-	const items = parent.children
+	const items = [...parent.children].slice(0, 20)
 	if(items.length < 8) return []
-	return items.map(item => parseHtmlPost(item))
+	const parsedPosts = items.map(item => parseHtmlPost(item, url))
+	const posts = parsedPosts.filter(post => post != null)
+	posts[0].timestamp = Date.now()
+	posts.forEach((post, index) => post.timestamp ??= 0)
+	return posts
 }
 
 function hasLocalHref(a, url){
@@ -95,7 +99,7 @@ function countAncestors(element, map){
 	if(element?.nodeType != Node.ELEMENT_NODE) return
 	const count = map.get(element) ?? 0
 	map.set(element, count + 1)
-	return countAncestors(element.parentNode)
+	return countAncestors(element.parentNode, map)
 }
 
 function getDepth(element){
@@ -103,12 +107,14 @@ function getDepth(element){
 	return getDepth(element.parentNode) + 1
 }
 
-function parseHtmlPost(item){
+function parseHtmlPost(item, pageUrl){
 	const [a] = item.querySelectorAll('a')
 	const titleSelector = 'h1,h2,h3,h4,h5,h6,[class*=title]'
 	const element = item.querySelector(titleSelector) ?? a
 	const guess = element.textContent.trim() || item.textContent.trim()
 	const title = guess.replaceAll(/\s+/g, ' ')
-	return {title, url}
+	const path = a.getAttribute('href')
+	if(!URL.canParse(path, pageUrl)) return null
+	const {href} = new URL(path, pageUrl)
+	return {title, href}
 }
-

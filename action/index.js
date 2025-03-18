@@ -1,6 +1,6 @@
-import {getAllPosts, refreshAllPosts} from '/utils/posts.js'
-import {loadImage} from '/utils/image.js'
-import {setSetting} from '/utils/settings.js'
+import {getAllPosts, refreshAllPosts} from '/-/posts.js'
+import {loadImage} from '/-/image.js'
+import {setSetting} from '/-/settings.js'
 
 const nav = document.querySelector('#posts')
 await resetListItems()

@@ -13,7 +13,8 @@ export async function fetchDom(url){
 	const value = cached?.deref()
 	if(value) return value
 	cache.delete(url)
-	const response = await fetch(url)
+	const response = await fetch(url).catch(() => null)
+	if(!response?.ok) return null
 	const source = await response.text()
 	const contentType = response.headers.get('Content-Type').trim()
 	const type = contentType.startsWith('text/html') ? 'text/html' : 'text/xml'

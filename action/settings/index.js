@@ -1,6 +1,7 @@
-import {getAllFeeds} from '/utils/feed.js'
-import {loadImage} from '/utils/image.js'
-import {setSetting, getAllSettings} from '/utils/settings.js'
+import {getAllFeeds} from '/-/feed.js'
+import {loadImage} from '/-/image.js'
+import {importOpml, exportOpml} from '/-/opml.js'
+import {setSetting, getAllSettings} from '/-/settings.js'
 
 const form = document.querySelector('form')
 const nav = document.querySelector('#feeds')
@@ -25,7 +26,7 @@ nav.replaceChildren(...feeds.map(feed => {
 	return a
 }))
 
-form.elements.unreaddot.checked = settings.discoveryDot
+form.elements.unreaddot.checked = settings.unreadDot
 form.elements.unreaddot.onchange = () => {
 	setSetting('unreadDot', form.elements.unreaddot.checked)
 }
@@ -38,4 +39,21 @@ form.elements.discoverydot.onchange = () => {
 form.elements.developermode.checked = settings.developerMode
 form.elements.developermode.onchange = () => {
 	setSetting('developerMode', form.elements.developermode.checked)
+}
+
+const {searchParams} = new URL(location)
+const isPopup = !searchParams.has('tab')
+document.querySelector('#open-tab-warning').hidden = !isPopup
+document.querySelector('#import-export a').href = exportOpml(feeds)
+document.querySelector('#import-export input').disabled = isPopup
+document.querySelector('#import-export input').oninput = async event => {
+	const input = event.target
+	const [label] = input.labels
+	const [file] = input.files
+	input.disabled = file != null
+	if(!file) return
+	const source = await file.text()
+	await importOpml(source)
+	input.disabled = false
+	location.reload()
 }

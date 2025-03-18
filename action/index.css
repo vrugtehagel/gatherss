@@ -1,6 +1,6 @@
 #posts {
 	a {
-		display: flex; max-width: 30rem; padding: .5rem .75rem;
+		display: flex; padding: .5rem .75rem;
 		gap: .75rem; align-items: center;
 		color: inherit;
 		border-radius: .25rem;

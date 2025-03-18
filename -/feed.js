@@ -34,6 +34,12 @@ export async function saveFeed({url, name}){
 	await refreshPosts(url)
 }
 
+export async function updateFeed(feedUrl, feed){
+	const old = await getFeed(feedUrl)
+	await removeFeed(feedUrl)
+	await saveFeed({...old, ...feed})
+}
+
 export async function getFeed(url){
 	const {[url]: feed} = await browser.storage.sync.get([url])
 	return feed ?? null

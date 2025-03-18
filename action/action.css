@@ -16,7 +16,7 @@
 }
 
 body {
-	min-width: 20rem; margin: 0; padding: 1.25rem;
+	width: 25rem; margin: 0 auto; padding: 1.25rem;
 	color: var(--text-color); background-color: var(--background-color);
 	font: message-box;
 	font-size: 1rem; line-height: 1.5;
@@ -37,9 +37,11 @@ input {
 	}
 }
 button:not(.link), a.button {
-	height: 1rem; padding: .5rem; box-sizing: content-box;
+	display: inline-block; padding: .5rem; box-sizing: content-box;
 	color: inherit; background-color: var(--button-color);
 	border: none; border-radius: .25rem;
+	font-weight: 600; font-size: .875rem; line-height: 1rem;
+	font-family: inherit;
 	text-decoration: none;
 	cursor: default;
 	&:not(:has(img)){ padding-inline: .75rem; }
@@ -51,6 +53,7 @@ button.link, a:not(.button){
 	padding: 0;
 	color: var(--accent-color); background: none;
 	border: none;
+	font-size: inherit; line-height: inherit; font-family: inherit;
 	text-decoration: underline;
 	cursor: pointer;
 	&:hover { color: var(--accent-color-hover); }

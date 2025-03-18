@@ -17,8 +17,12 @@ form {
 		font-size: .875rem;
 		button { text-align: left; }
 	}
-	button[type=submit] {
-		align-self: end;
-		padding-inline: 1.5rem; margin-top: .25rem;
+	#actions {
+		display: flex;
+		align-items: center;
+		font-size: .875rem;
+		button[type=submit] {
+			padding-inline: 1.5rem; margin: .25rem 0 0 auto;
+		}
 	}
 }

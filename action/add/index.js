@@ -1,4 +1,4 @@
-import {findRssFeed} from '/utils/feed.js'
+import {findRssFeed, getFeed, getAllFeeds} from '/-/feed.js'
 
 const form = document.querySelector('form')
 const message = document.querySelector('form #message')
@@ -16,7 +16,11 @@ form.onsubmit = async event => {
 	form.elements.submit.disabled = !ok
 	form.classList.remove('loading')
 	if(!feedUrl) return message.textContent = 'No feed found'
-	if(ok) return message.textContent = ''
+	const stored = await getFeed(url)
+	const canAddFeed = ok && !stored
+	form.elements.submit.disabled = !canAddFeed
+	if(canAddFeed) return message.textContent = ''
+	if(ok) return message.textContent = `Already subscribed to ${stored.name}`
 	const button = document.createElement('button')
 	button.onclick = () => form.elements.feedurl.value = feedUrl
 	button.textContent = feedUrl
@@ -26,9 +30,13 @@ form.onsubmit = async event => {
 
 const [tab] = await browser.tabs.query({active: true, currentWindow: true})
 const responding = browser.tabs.sendMessage(tab.id, {type: 'feeddetect'})
-const response = await responding.catch(e => e.message)
+const response = await responding.catch(() => null)
 const {feedUrl} = response ?? {}
 form.elements.feedurl.value = feedUrl || ''
 form.classList.remove('loading')
 form.elements.feedurl.disabled = false
 if(feedUrl) form.onsubmit()
+
+const feeds = await getAllFeeds()
+const helper = document.querySelector('a[href*="import"]')
+if(feeds.length == 0) helper.hidden = false

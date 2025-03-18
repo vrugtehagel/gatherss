@@ -14,14 +14,7 @@
 		"scripts": ["background.js"],
 		"type": "module"
 	},
-	"permissions": [
-		"activeTab",
-		"alarms",
-		"storage",
-		"tabs",
-		"webRequest",
-		"webRequestBlocking"
-	],
+	"permissions": ["activeTab", "alarms", "storage"],
 	"host_permissions": ["<all_urls>"],
 	"action": {
 		"default_title": "Gatherss",
