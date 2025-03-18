@@ -6,7 +6,7 @@ whistles. Just links to cool posts.
 ## Getting started
 
 For local development, not much is needed; there is no build process, so the
-extension can be added by navigating to <about:debugging> and clicking "Load
+extension can be added by navigating to about:debugging and clicking "Load
 Temporary Add-on", then selecting the `manifest.json` file.
 
 For the exported ZIP, hidden files must be excluded (most importantly the `.git`
