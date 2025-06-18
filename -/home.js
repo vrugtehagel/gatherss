@@ -2,7 +2,8 @@ import {queryDom} from './dom.js'
 
 export async function getIcon(url){
 	const {origin} = new URL(url)
-	const links = await queryDom(origin, 'link[rel=icon]')
+	const selector = 'link[rel="icon"], link[rel="shortcut icon"]'
+	const links = await queryDom(origin, selector)
 	if(links.length == 0) return ''
 	const svg = links.find(link => link.type == 'image/svg+xml')
 	const icon32 = links.find(link => link.sizes.contains('32x32'))
