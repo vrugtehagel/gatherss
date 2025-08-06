@@ -1,5 +1,6 @@
 import {queryDom, getDomType} from './dom.js'
 import {getAllFeeds} from './feed.js'
+import {getSetting} from './settings.js'
 
 export async function getAllPosts(){
 	const feeds = await getAllFeeds()
@@ -42,7 +43,9 @@ export async function refreshPosts(url){
 export async function fetchPosts(url){
 	const type = await getDomType(url)
 	if(type == 'rss') return await fetchRssPosts(url)
-	return await fetchHtmlPosts(url)
+	const developerMode = getSetting('developerMode')
+	if(developerMode) return await fetchHtmlPosts(url)
+	return []
 }
 
 async function fetchRssPosts(url){
