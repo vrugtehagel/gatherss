@@ -29,7 +29,9 @@ export async function refreshAllPosts(){
 export async function refreshPosts(url){
 	const {[url]: feed = {}} = await browser.storage.sync.get([url])
 	feed.posts ??= []
-	const posts = await fetchPosts(url)
+	const fetched = await fetchPosts(url).catch(() => null)
+	if(!fetched) feed.failed = true
+	const posts = fetched ?? []
 	const isListed = post => feed.posts.some(({href}) => post.href == href)
 	const unlisted = posts.filter(post => !isListed(post))
 	const now = Date.now()
@@ -40,12 +42,12 @@ export async function refreshPosts(url){
 	return feed.posts
 }
 
-export async function fetchPosts(url){
+async function fetchPosts(url){
 	const type = await getDomType(url)
 	if(type == 'rss') return await fetchRssPosts(url)
-	const developerMode = getSetting('developerMode')
+	const developerMode = await getSetting('developerMode')
 	if(developerMode) return await fetchHtmlPosts(url)
-	return []
+	throw Error(`Feed ${url} seems to no longer be an RSS feed`)
 }
 
 async function fetchRssPosts(url){

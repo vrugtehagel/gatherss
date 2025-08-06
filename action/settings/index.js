@@ -1,5 +1,5 @@
 import {getAllFeeds} from '/-/feed.js'
-import {loadImage} from '/-/image.js'
+import {loadFavicon} from '/-/image.js'
 import {importOpml, exportOpml} from '/-/opml.js'
 import {setSetting, getAllSettings} from '/-/settings.js'
 
@@ -14,15 +14,20 @@ nav.replaceChildren(...feeds.map(feed => {
 	const img = document.createElement('img')
 	const span = document.createElement('span')
 	img.src = '/icons/site.svg'
+	loadFavicon(feed.icon).then(src => img.src = src)
 	img.alt = ''
 	img.width = img.height = 16
-	if(feed.icon) loadImage(feed.icon).then(src => img.src = src)
 	span.textContent = feed.name
 	const url = new URL('./edit/index.html', location)
 	url.searchParams.set('feedurl', feed.url)
 	a.href = url.href
 	a.title = feed.name
 	a.append(img, span)
+	if(!feed.failed) return a
+	const warning = document.createElement('img')
+	warning.src = '/icons/warning.svg'
+	warning.alt = 'Feed failed to load'
+	a.append(warning)
 	return a
 }))
 

@@ -1,5 +1,5 @@
 import {getAllPosts, refreshAllPosts} from '/-/posts.js'
-import {loadImage} from '/-/image.js'
+import {loadFavicon} from '/-/image.js'
 import {setSetting} from '/-/settings.js'
 
 const nav = document.querySelector('#posts')
@@ -29,9 +29,9 @@ function createListItem(post){
 	const img = document.createElement('img')
 	const span = document.createElement('span')
 	img.src = '/icons/site.svg'
+	loadFavicon(post.feed.icon).then(src => img.src = src)
 	img.alt = ''
 	img.width = img.height = 16
-	if(post.feed.icon) loadImage(post.feed.icon).then(src => img.src = src)
 	span.textContent = post.title
 	a.href = post.href
 	a.title = post.title

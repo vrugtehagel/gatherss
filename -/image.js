@@ -1,5 +1,13 @@
+export async function loadFavicon(url){
+	const fallback = '/icons/site.svg'
+	if(!url) return fallback
+	const dataUrl = await loadImage(url)
+	if(dataUrl.startsWith('data:text/html')) return fallback
+	return dataUrl
+}
+
 const cache = new Map()
-export async function loadImage(url){
+async function loadImage(url){
 	const cached = cache.get(url)
 	if(cached) return cached
 	const promise = fetchImage(url)

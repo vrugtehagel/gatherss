@@ -40,7 +40,6 @@ async function refresh(){
 	if(!unreadDot) return browser.action.setIcon({path: '/icons/rss.svg'})
 	const unreadSetting = await getSetting('unread')
 	const newUnread = await refreshAllPosts()
-	console.log({unreadSetting, newUnread})
 	if(!unreadSetting && newUnread) await setSetting('unread', true)
 	const unread = unreadSetting || newUnread
 	const path = unread ? '/icons/rss-unread.svg' : '/icons/rss.svg'
