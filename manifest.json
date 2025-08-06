@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "Gatherss",
 	"description": "Gather RSS feeds, without bells and whistles.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"browser_specific_settings": {
 		"gecko": {"id": "gatherss@vrugtehagel"}
 	},
