@@ -66,6 +66,7 @@ function parseRssPost(item){
 
 async function fetchHtmlPosts(url){
 	const unfiltered = await queryDom(url, 'a[href]:not([href^="#"])')
+	if(unfiltered.length == 0) return []
 	const as = unfiltered.filter(a => hasLocalHref(a, url))
 	const map = new Map()
 	for(const a of as) countAncestors(a.parentNode, map)
