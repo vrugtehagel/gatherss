@@ -1,5 +1,5 @@
 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color-scheme: light dark;">
 	<path d="M27 16A1 1 0 0 0 5 16" stroke="light-dark(#5B5B66, #FBFBFB)" fill="none" stroke-width="3" stroke-linecap="round" transform-origin="16 16">
-		<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur=".8s" repeatCount="indefinite"></animateTransform>
+		<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur=".8s" repeatCount="indefinite"/>
 	</path>
 </svg>

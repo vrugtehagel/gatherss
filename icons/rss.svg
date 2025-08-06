@@ -1,4 +1,4 @@
 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color-scheme: light dark;">
-	<path d="M28 26A23 23 0 0 0 6 4M21 26A16 16 0 0 0 6 11" fill="none" stroke="light-dark(#5B5B66, #FBFBFB)" stroke-width="2.5" stroke-linecap="round" />
-	<circle cx="9" cy="23" r="4" fill="light-dark(#5B5B66, #FBFBFB)" />
+	<path d="M28 26A23 23 0 0 0 6 4M21 26A16 16 0 0 0 6 11" fill="none" stroke="light-dark(#5B5B66, #FBFBFB)" stroke-width="2.5" stroke-linecap="round"/>
+	<circle cx="9" cy="23" r="4" fill="light-dark(#5B5B66, #FBFBFB)"/>
 </svg>
