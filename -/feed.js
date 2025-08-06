@@ -1,6 +1,6 @@
 import {queryDom, getDomType} from './dom.js'
 import {getIcon} from './home.js'
-import {refreshPosts, fetchPosts} from './posts.js'
+import {refreshPosts} from './posts.js'
 
 export async function findRssFeed(url){
 	if(url.match(/^\w+\.\w/)) url = `https://${url}`
@@ -16,13 +16,6 @@ export async function findRssFeed(url){
 	if(!URL.canParse(path, origin)) return ''
 	const {href} = new URL(path, origin)
 	return href
-}
-
-export async function isFeed(url){
-	const type = await getDomType(url)
-	if(type == 'rss') return true
-	const posts = await fetchPosts(url)
-	return posts.length > 0
 }
 
 export async function saveFeed({url, name}){
