@@ -30,7 +30,8 @@ export async function refreshPosts(url){
 	const {[url]: feed = {}} = await browser.storage.sync.get([url])
 	feed.posts ??= []
 	const fetched = await fetchPosts(url).catch(() => null)
-	if(!fetched) feed.failed = true
+	if(fetched) delete feed.failed
+	else feed.failed = true
 	const posts = fetched ?? []
 	const isListed = post => feed.posts.some(({href}) => post.href == href)
 	const unlisted = posts.filter(post => !isListed(post))
