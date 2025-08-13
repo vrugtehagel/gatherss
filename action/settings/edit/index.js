@@ -1,5 +1,4 @@
-import {getFeed, updateFeed, removeFeed} from '/-/feed.js'
-import {refreshPosts} from '/-/posts.js'
+import {getFeed, removeFeed, saveFeed} from '/-/feed.js'
 import {getSetting} from '/-/settings.js'
 
 const {searchParams} = new URL(location.href)
@@ -16,7 +15,8 @@ form.onsubmit = async event => {
 	event.preventDefault()
 	const url = form.elements.feedurl.value
 	const name = form.elements.feedname.value
-	await updateFeed(feedUrl, {url, name})
+	await removeFeed(feedUrl)
+	await saveFeed({url, name})
 	location.assign('../index.html')
 }
 
@@ -25,7 +25,8 @@ refresh.onclick = async () => {
 	const img = refresh.querySelector('img')
 	refresh.disabled = true
 	img.src = '/icons/spinner.svg'
-	await refreshPosts(feedUrl)
+	await removeFeed(feedUrl)
+	await saveFeed(feed)
 	img.src = '/icons/sync.svg'
 }
 
