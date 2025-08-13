@@ -4,7 +4,7 @@ export async function getIcon(url){
 	const {origin} = new URL(url)
 	const selector = 'link[rel="icon"], link[rel="shortcut icon"]'
 	const links = await queryDom(origin, selector)
-	if(links.length == 0) return ''
+	if(links.length == 0) return `${origin}/favicon.ico`
 	const svg = links.find(link => link.type == 'image/svg+xml')
 	const icon32 = links.find(link => link.sizes.contains('32x32'))
 	const icon16 = links.find(link => link.sizes.contains('16x16'))
