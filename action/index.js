@@ -12,7 +12,7 @@ async function resetListItems(){
 	createListItemBatch(posts, 0)
 }
 
-function createListItemBatch(posts, page, oldObserver){
+function createListItemBatch(posts, page){
 	const as = posts.slice(page * 20, (page + 1) * 20).map(createListItem)
 	if(as.length == 0) return
 	nav.append(...as)
