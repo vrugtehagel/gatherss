@@ -1,4 +1,4 @@
-import {saveFeed, getAllFeeds} from './feed.js'
+import {saveFeed} from './feed.js'
 
 export async function importOpml(source){
 	const parser = new DOMParser()

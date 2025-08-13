@@ -2,7 +2,7 @@ export async function loadFavicon(url){
 	const fallback = '/icons/site.svg'
 	if(!url) return fallback
 	const dataUrl = await loadImage(url)
-	if(dataUrl.startsWith('data:text/html')) return fallback
+	if(dataUrl.startsWith('data:text')) return fallback
 	return dataUrl
 }
 

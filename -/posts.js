@@ -91,7 +91,7 @@ async function fetchHtmlPosts(url){
 	const parsedPosts = items.map(item => parseHtmlPost(item, url))
 	const posts = parsedPosts.filter(post => post != null)
 	posts[0].timestamp = Date.now()
-	posts.forEach((post, index) => post.timestamp ??= 0)
+	posts.forEach(post => post.timestamp ??= 0)
 	return posts
 }
 

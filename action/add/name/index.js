@@ -1,4 +1,3 @@
-import {saveFeed} from '/-/feed.js'
 import {getTitle} from '/-/home.js'
 
 const form = document.querySelector('form')

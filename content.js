@@ -1,7 +1,6 @@
 const links = [...document.querySelectorAll('link[rel=alternate]')]
 const contentType = /^application\/((atom|rss)\+)?xml\b/
 const [link] = links.filter(link => contentType.test(link.type))
-const {origin} = location
 const feedUrl = link?.href || ''
 
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
