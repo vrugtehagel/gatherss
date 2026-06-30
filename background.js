@@ -29,7 +29,6 @@ async function checkForRssFeed(tab){
 	const response = await responding.catch(() => null)
 	const {feedUrl} = response ?? {}
 	const windowId = tab.windowId
-	console.log(windowId)
 	if(!feedUrl) return browser.action.setIcon({path: icons.default, windowId})
 	const storage = await browser.storage.sync.get([feedUrl])
 	const discoveryDot = await getSetting('discoveryDot')
@@ -38,7 +37,7 @@ async function checkForRssFeed(tab){
 	browser.action.setIcon({path, windowId})
 }
 
-browser.alarms.create({periodInMinutes: .1})
+browser.alarms.create('gatherss', {periodInMinutes: 30})
 browser.alarms.onAlarm.addListener(async () => {
 	const unreadDot = await getSetting('unreadDot')
 	if(!unreadDot) return
