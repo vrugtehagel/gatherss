@@ -4,7 +4,10 @@
 	"description": "Gather RSS feeds, without bells and whistles.",
 	"version": "0.0.5",
 	"browser_specific_settings": {
-		"gecko": {"id": "gatherss@vrugtehagel"}
+		"gecko": {
+			"id": "gatherss@vrugtehagel",
+			"data_collection_permissions": {"required": ["none"]}
+		}
 	},
 	"developer": {
 		"name": "vrugtehagel",
